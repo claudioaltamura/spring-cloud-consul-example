@@ -20,11 +20,12 @@ A Spring Cloud Consul example
 
 Rest
 
-    curl http://localhost:8080/hello
+    curl http://localhost:8080/helloworld
 
 Service Discovery
 
-    curl http://localhost:8080/discoery
+    curl http://localhost:8080/discoverYHost
+    curl http://localhost:8080/discoveryExample
 
 Distributed Configuration
 

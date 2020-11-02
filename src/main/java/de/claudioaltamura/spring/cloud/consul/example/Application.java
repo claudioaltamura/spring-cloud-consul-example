@@ -3,8 +3,8 @@ package de.claudioaltamura.spring.cloud.consul.example;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,7 +13,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-@RestController
 @EnableDiscoveryClient
 @SpringBootApplication
 public class Application {
@@ -40,9 +39,9 @@ public class Application {
       .send(request, HttpResponse.BodyHandlers.ofString());
   }
 
-  @RequestMapping("/hello")
-  public String home() {
-    return "Hello World!";
+  @Bean
+  public RestTemplate restTemplate() {
+    return new RestTemplate();
   }
 
 }
