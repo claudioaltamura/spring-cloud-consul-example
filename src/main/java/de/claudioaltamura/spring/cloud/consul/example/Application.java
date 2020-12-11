@@ -49,15 +49,14 @@ public class Application implements CommandLineRunner {
     return new RestTemplate();
   }
 
-	@Override
-	public void run(String... args) throws Exception {
-		ConsulClient consulClient = new ConsulClient("http://127.0.0.1:8500");
-		consulClient.setKVValue(
-				"/config/blueprint/greetings/note", "hello");
+  @Override
+  public void run(String... args) throws Exception {
+  	ConsulClient consulClient = new ConsulClient("http://127.0.0.1:8500");
+  	consulClient.setKVValue("/config/blueprint/greetings/note", "hello");
 
-		Response<GetValue> response = consulClient.getKVValue("/config/blueprint/greetings/note");
+  	Response<GetValue> response = consulClient.getKVValue("/config/blueprint/greetings/note");
 
-		System.out.println("stored value:" +  response.getValue().getDecodedValue());
+  	System.out.println("stored value:" +  response.getValue().getDecodedValue());
+  }
 
-	}
 }
